@@ -1,9 +1,9 @@
 <?php
 
-use App\Models\Product;
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
+use App\Models\product;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
@@ -14,7 +14,7 @@ return new class extends Migration
     {
         Schema::create('product_galleries', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(Product::class)->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignIdFor(product::class)->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->string('image');
             $table->boolean('is_featured')->default(false);
             $table->timestamps();

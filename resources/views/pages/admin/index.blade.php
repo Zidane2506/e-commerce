@@ -4,18 +4,15 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">With Home Icon</h5>
-
+            <h5 class="card-title">Hello {{ Auth::user()->name }}</h5>
             <nav>
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house-door"></i></a></li>
-                    <li class="breadcrumb-item"><a href="#">Library</a></li>
-                    <li class="breadcrumb-item active">Default</li>
+                    <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door"></i></a></li>
+                    <li class="breadcrumb-item active">Dashboard</li>
                 </ol>
             </nav>
         </div>
     </div>
 
     </div>
-    Hello {{ Auth::user()->name }}
 @endsection
