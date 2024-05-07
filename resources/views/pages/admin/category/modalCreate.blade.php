@@ -18,9 +18,6 @@
                             <label for="categoryImage" class="form-label">Category Image</label>
                             <input type="file" class="form-control" name="image" id="categoryImage">
                         </div>
-                        <div class="col-12">
-                            <img src="#" alt="Category-Image" id="previewLogo" class="visually-hidden img-thumbnail">
-                        </div>
                         <div class="modal-footer mt-5">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Save changes</button>

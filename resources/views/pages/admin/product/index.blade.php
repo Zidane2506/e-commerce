@@ -5,13 +5,14 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <h5 class="card-title">Category</h5>
+            <h5 class="card-title">Product</h5>
 
             <nav>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                    <li class="breadcrumb-item"><a href="#">Category</a></li>
-                    <li class="breadcrumb-item active">Data Category</li>
+                    <li class="breadcrumb-item"><a href="#">Product</a></li>
+                    <li class="breadcrumb-item active">Data Product
+                    <li>
                 </ol>
             </nav>
         </div>
@@ -19,10 +20,10 @@
         <div class="card-body">
             <!-- Basic Modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalCreate">
-                <i class="bi bi-plus mr-3"></i>Add Category
+                <i class="bi bi-plus mr-3"></i>Add Product
             </button>
 
-            @include('pages.admin.category.modalCreate')
+            @include('pages.admin.product.modalCreate')
             <!-- Table with stripped rows -->
 
             <div class="datatable-top">
@@ -46,24 +47,30 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
-                            <th>Images</th>
+                            <th>category</th>
+                            <th>Description</th>
+                            <th>Price</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($category as $row)
+                        @forelse ($product as $row)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $row->name }}</td>
-                                <td><img src="{{ url('storage/category/', $row->image) }}" alt="{{ $row->name }}"
-                                        width="100"></td>
+                                <td>{{ $row->category->name }}</td>
+                                <td>{!! $row->description !!}</td>
+                                <td>Rp.{{ $row->price }}</td>
                                 <td>
+                                    <a href="{{ route('admin.product.gallery.index', $row->id) }}" class="btn btn-primary">
+                                        <i class="bi bi-card-image"></i>
+                                    </a>
                                     <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                        data-bs-target="#editModalCategory{{ $row->id }}">
+                                        data-bs-target="#editModalProduct{{ $row->id }}">
                                         <i class="bi bi-pencil"></i>
                                     </button>
-                                    @include('pages.admin.category.modalEdit')
-                                    <form action="{{ route('admin.category.destroy', $row->id) }}" method="POST"
+                                    @include('pages.admin.product.modalEdit')
+                                    <form action="{{ route('admin.product.destroy', $row->id) }}" method="POST"
                                         class="d-inline">
                                         @csrf
                                         @method('DELETE')
