@@ -35,6 +35,16 @@ class RegisterController extends Controller
      *
      * @return void
      */
+
+    protected function redirectTo()
+    {
+        if (auth()->user()->role == 'admin') {
+            return '/admin/dahboard';
+        } else {
+            return '/user/dashboard';
+        }
+    }
+
     public function __construct()
     {
         $this->middleware('guest');

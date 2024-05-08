@@ -173,7 +173,7 @@
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#"
                     data-bs-toggle="dropdown">
                     <img
-                        src="{{ asset('dashboard/assets/img/profile-img.jpg" alt="Profile" class="rounded') }}-circle">
+                        src="#" alt="" class="rounded-circle">
                     <span class="d-none d-md-block dropdown-toggle ps-2">{{ Auth::user()->name }}</span>
                 </a><!-- End Profile Iamge Icon -->
 
@@ -218,7 +218,7 @@
 
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button class="btn btn-danger mt-4">
+                        <button class="btn btn-danger d-flex mx-auto my-3">
                             <span>Logout</span>
                         </button>
                     </form>

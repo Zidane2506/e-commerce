@@ -93,18 +93,18 @@ class ProductGalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product, string $id)
+    public function destroy(Product $product, ProductGallery $gallery)
     {
         try {
 
-            // get gallery by id
-            $gallery = $product->product_galleries()->findOrFail($id);
+            // get data product
+            $product = $product->findOrfail($product->id);
 
-            Storage::delete('public/product/gallery/' . basename($gallery->image));
+            // get data gallery
+            $gallery = $gallery->findOrfail($gallery->id);
 
-            //delete image from storage
+            Storage::disk('local')->delete('public/product/gallery/' . basename($gallery->image));
             $gallery->delete();
-
             return redirect()->route('admin.product.gallery.index', $product->id)->with('success', 'Image deleted successfully');
         } catch (Exception $e) {
             dd($e->getMessage());
