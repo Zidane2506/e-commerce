@@ -77,6 +77,44 @@
 
                 </div>
             </div>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>No</td>
+                        <td>Email</td>
+                        <td>Name</td>
+                        <td>Role</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse ($users as $row)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>
+                                {{ $row->email }}
+                            </td>
+                            <td>
+                                {{ $row->name }}
+                            </td>
+                            <td>
+                                {{ $row->role }}
+                            </td>
+                            <td>
+                                {{-- <form action="#" method="post"></form> --}}
+                                    <button class="btn btn-warning">
+                                        <i class="bi bi-pencil">Change Password</i>
+                                    </button>
+                            </td>
+                        </tr>
+                    @empty
+                        <tr>
+                            <td colspan="3" class="text-center">Data not found</td>
+                        </tr>
+                    @endforelse
+                </tbody>
+            </table>
         </div>
     </div>
 @endsection
