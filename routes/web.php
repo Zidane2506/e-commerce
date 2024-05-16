@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\FrontEnd\FrontEndController;
 use App\Http\Controllers\Admin\MyTransactionController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 
 Route::get('/', [FrontEndController::class, 'index']);
+Route::get('/detailProduct/{slug}', [FrontEndController::class, 'detailProduct'])->name('detail.product');
 
 Auth::routes();
 

@@ -38,7 +38,7 @@
         <li class="nav-item">
             <a class="nav-link {{ request()->routeIs('admin.transaction.*', 'admin.product.*') ? '' : 'collapsed' }} "
                 data-bs-target="#transaction-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>Products</span><i class="bi bi-chevron-down ms-auto"></i>
+                <i class="bi bi-menu-button-wide"></i><span>Transaction</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
             <ul id="transaction-nav"
                 class="nav-content collapse {{ request()->routeIs('admin.transaction.*', 'admin.product.*') ? 'show' : '' }} "
