@@ -26,17 +26,16 @@
                     <tr>
                         <td>No</td>
                         <td>Name Account</td>
-                        <td>Name</td>
-                        <td>Email</td>
-                        <td>Phone</td>
+                        <td>Receiver Name</td>
+                        <td>Receiver Email</td>
+                        <td>Receiver Phone</td>
                         <td>Status</td>
                         <td>Total Price</td>
                         <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($myTransaction as $row)
-                        {{-- @include('pages.admin.myTransaction.detail') --}}
+                    @forelse ($Transaction as $row)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ auth()->user()->name }}</td>
@@ -55,13 +54,19 @@
                                 @endif
                             </td>
                             <td>IDR. {{ number_format($row->total_price) }}</td>
-                            <td>@if (Auth::user()->role == 'admin')
-                                <a href="{{ route('admin.myTransaction.show', [$row->slug, $row->id]) }}">
-                                    Show</a>
-                            @else
-                                <a href="{{ route('user.myTransaction.show', [$row->slug, $row->id]) }}">
-                                    Show</a>
-                            @endif</td>
+                            <td>
+                                {{-- <a href="{{ route('admin.transaction.showDataByIdAndSlug', [$row->slug, $row->id]) }}"
+                                    class="btn btn-warning">
+                                    Show</a> --}}
+
+                                <a href="{{ route('admin.showTransactionUseAdminWithSlugAndId', [$row->id, $row->slug]) }}">test</a>
+
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#basicModal{{ $row->id }}">
+                                    Edit
+                                </button>
+                                @include('pages.admin.transaction.modal')
+                            </td>
                         </tr>
                     @empty
                         <tr>

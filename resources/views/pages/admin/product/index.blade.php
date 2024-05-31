@@ -60,7 +60,7 @@
                                 <td>{{ $row->name }}</td>
                                 <td>{{ $row->category->name }}</td>
                                 <td>{!! $row->description !!}</td>
-                                <td>Rp.{{ $row->price }}</td>
+                                <td>Rp.{{ number_format($row->price) }}</td>
                                 <td>
                                     <a href="{{ route('admin.product.gallery.index', $row->id) }}" class="btn btn-primary">
                                         <i class="bi bi-card-image"></i>

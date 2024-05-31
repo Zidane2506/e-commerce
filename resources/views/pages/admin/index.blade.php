@@ -1,33 +1,54 @@
 @extends('layouts.parent')
 
-@section('title', 'Dashboard')
+@section('title', 'Dashboard - Admin')
+
 @section('content')
+
     <div class="section dashboard">
-        <div class="card info-card customers-card">
-            <div class="card-body">
-                <h5 class="card-title">Dashboard <span>| {{ auth()->user()->name }}</span></h5>
-                <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-people"></i>
-                    </div>
-                    <div class="ps-3">
-                        <h6>{{ auth()->user()->name }}</h6>
-                        <span class="text-danger small pt-1 fw-bold">{{ auth()->user()->email }}</span>
+        <div class="row">
+            <div class="col-xxl-4 col-xl-12">
+
+                <div class="card info-card customers-card">
+
+
+                    <div class="card-body">
+                        <h5 class="card-title">Dashboard |<span class="badge bg-danger text-white-50"><i
+                                    class="bi bi-exclamation-octagon me-1"></i> Danger</span>
+                                    
+                        </h5>
+
+                        <div class="d-flex align-items-center">
+                            <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                <i class="bi bi-people"></i>
+                            </div>
+                            <div class="ps-3">
+                                <h6>{{ Auth::user()->name }}</h6>
+                                <span class="text-danger small pt-1 fw-bold">{{ Auth::user()->email }}</span>
+
+                            </div>
+                            <div class="ps-3">
+                                <a href="" class="btn btn-danger">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
-            </div>
+            </div><!-- End Customers Card -->
         </div>
     </div>
 
 
     <div class="section dashboard">
         <div class="row">
-            <div class="col-md-4">
+            <!-- Sales Card -->
+            <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
 
                     <div class="card-body">
-                        <h5 class="card-title">Category</h5>
+                        <h5 class="card-title">Category <span>| Today</span></h5>
 
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -40,16 +61,16 @@
                     </div>
 
                 </div>
-            </div>
-            <div class="col-md-4">
+            </div><!-- End Sales Card -->
+            <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
 
                     <div class="card-body">
-                        <h5 class="card-title">Product</h5>
+                        <h5 class="card-title">Product <span>| This Year <span class="current-time"></span></span></h5>
 
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                                <i class="bi bi-box"></i>
+                                <i class="bi bi-bucket-fill"></i>
                             </div>
                             <div class="ps-3">
                                 <h6>{{ $product }}</h6>
@@ -59,11 +80,11 @@
 
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-xxl-4 col-md-6">
                 <div class="card info-card sales-card">
 
                     <div class="card-body">
-                        <h5 class="card-title">User</h5>
+                        <h5 class="card-title">User <span>| Today</span></h5>
 
                         <div class="d-flex align-items-center">
                             <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -77,44 +98,9 @@
 
                 </div>
             </div>
-
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td>No</td>
-                        <td>Email</td>
-                        <td>Name</td>
-                        <td>Role</td>
-                        <td>Action</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    @forelse ($users as $row)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>
-                                {{ $row->email }}
-                            </td>
-                            <td>
-                                {{ $row->name }}
-                            </td>
-                            <td>
-                                {{ $row->role }}
-                            </td>
-                            <td>
-                                {{-- <form action="#" method="post"></form> --}}
-                                    <button class="btn btn-warning">
-                                        <i class="bi bi-pencil">Change Password</i>
-                                    </button>
-                            </td>
-                        </tr>
-                    @empty
-                        <tr>
-                            <td colspan="3" class="text-center">Data not found</td>
-                        </tr>
-                    @endforelse
-                </tbody>
-            </table>
         </div>
     </div>
+
+
+    
 @endsection

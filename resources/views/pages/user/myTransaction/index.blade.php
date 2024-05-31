@@ -29,13 +29,12 @@
                         <td>Name</td>
                         <td>Email</td>
                         <td>Phone</td>
-                        <td>Status</td>
                         <td>Total Price</td>
                         <td>Action</td>
                     </tr>
                 </thead>
                 <tbody>
-                    @forelse ($myTransaction as $row)
+                    @forelse ($Transaction as $row)
                         {{-- @include('pages.admin.myTransaction.detail') --}}
                         <tr>
                             <td>{{ $loop->iteration }}</td>
@@ -55,13 +54,7 @@
                                 @endif
                             </td>
                             <td>IDR. {{ number_format($row->total_price) }}</td>
-                            <td>@if (Auth::user()->role == 'admin')
-                                <a href="{{ route('admin.myTransaction.show', [$row->slug, $row->id]) }}">
-                                    Show</a>
-                            @else
-                                <a href="{{ route('user.myTransaction.show', [$row->slug, $row->id]) }}">
-                                    Show</a>
-                            @endif</td>
+                            <td>Show</td>
                         </tr>
                     @empty
                         <tr>

@@ -24,18 +24,8 @@
                             </select>
                         </div>
                         <label class="mt-3 mb-2">Product Description</label>
-                        <textarea name="description" id="editors" cols="2">
+                        <textarea name="description" id="editors, {{ $row->id }}" cols="2">
                 </textarea>
-                <script>
-                    ClassicEditor
-                        .create(document.querySelector('#editors'))
-                        .then(editor => {
-                            console.log(editor);
-                        })
-                        .catch(error => {
-                            console.error(error);
-                        });
-                </script>
                         <div class="mt-3 mb-2">
                             <label for="productPrice" class="form-label">Product Price</label>
                             <input type="number" class="form-control" name="price" id="productPrice">

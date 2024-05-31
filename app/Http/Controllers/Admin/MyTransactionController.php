@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\TransactionItem;
 
 class MyTransactionController extends Controller
 {
@@ -39,7 +40,7 @@ class MyTransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($name)
     {
         //
     }
@@ -66,5 +67,14 @@ class MyTransactionController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function showDataBySlugAndId($slug, $id)
+    {
+        $transaction = Transaction::where('slug', $slug)->where('id', $id)->firstOrFail();
+
+        return view('pages.admin.myTransaction.show', compact(
+            'transaction'
+        ));
     }
 }
